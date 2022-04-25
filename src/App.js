@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import mainImage from './main-image.jpg';
 import Likes from './Likes';
+import title from './title';
 
 export default class App extends React.Component {
     render() {
