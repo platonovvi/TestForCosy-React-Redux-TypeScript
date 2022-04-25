@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import mainImage from './main-image.jpg';
 import Likes from './Likes';
-import title from './title';
+import Title from './Title';
 
 export default class App extends React.Component {
     render() {
@@ -12,6 +12,7 @@ export default class App extends React.Component {
                     <div className="card">
                         <div className="card-image">
                             <img src={mainImage} alt="surfing"></img>
+                            <Title/>
                             <Likes/>
                         </div>
                     </div>
