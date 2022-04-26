@@ -19,7 +19,6 @@ function Comments(props) {
         e.preventDefault();
         const id = uniqid();
         dispatch(commentCreate(textComment, id));
-
     }
 
     useEffect(() => {

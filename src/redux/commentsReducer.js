@@ -4,7 +4,6 @@ const intialState = {
     comments: []
 }
 export const commentsReducer = (state = intialState, action) => {
-    console.log('asdasd', action)
     switch (action.type) {
         case COMMENT_CREATE:
             return {

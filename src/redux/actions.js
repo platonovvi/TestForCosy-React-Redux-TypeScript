@@ -7,7 +7,10 @@ import {
     COMMENT_DELETE,
     COMMENTS_LOAD,
     LOADER_DISPLAY_ON,
-    LOADER_DISPLAY_OFF} from "./types";
+    LOADER_DISPLAY_OFF,
+    ERROR_DISPLAY_ON,
+    ERROR_DISPLAY_OFF
+} from "./types";
 
 export function incrementLikes() {
     return {
@@ -46,20 +49,37 @@ export function commentDelete(id) {
     return {
         type: COMMENT_DELETE,
         id
-    }
+    };
 }
+
 export function loaderOn() {
     return {
-        type: LOADER_DISPLAY_ON,
+        type: LOADER_DISPLAY_ON
     }
 }
+
 export function loaderOff() {
     return {
-        type: LOADER_DISPLAY_OFF,
+        type: LOADER_DISPLAY_OFF
     }
 }
+
+export function errorOn(text) {
+    return {
+        type: ERROR_DISPLAY_ON,
+        text
+    }
+}
+
+export function errorOff() {
+    return {
+        type: ERROR_DISPLAY_OFF,
+    }
+}
+
 export function commentsLoad() {
-        return async dispatch => {
+    return async dispatch => {
+        try {
             dispatch(loaderOn());
             const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=10');
             const jsonData = await response.json();
@@ -68,5 +88,9 @@ export function commentsLoad() {
                 data: jsonData
             });
             dispatch(loaderOff());
+        } catch (err) {
+            dispatch(errorOn('Ошибка API'));
+            dispatch(loaderOff());
         }
+    }
 }
