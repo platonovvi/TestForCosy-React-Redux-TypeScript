@@ -4,7 +4,6 @@ const intialState = {
     text: '',
 }
 export const inputReducer = (state = intialState, action) => {
-    console.log('inputReducer >', action)
     switch(action.type) {
         case INPUT_TEXT:
             return {
