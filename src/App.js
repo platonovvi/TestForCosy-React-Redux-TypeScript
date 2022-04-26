@@ -1,28 +1,51 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import './App.scss';
-import mainImage from './main-image.jpg';
 import Likes from './Likes';
-import Title from './Title';
-import Comments from './Comments';
+import Jokes from './Jokes';
+import Selected from './Selected';
 import Spin from './Spin';
+import {jokesLoad, openSelected} from './redux/actions'
 
 function App() {
     const error = useSelector(state => state.appReducer.error);
+    const open = useSelector(state => state.appReducer.openSelected);
+    const empty = useSelector(state => state.jokesReducer.selected.length);
+    const dispatch = useDispatch();
+    const Refresh = () => {
+        dispatch(jokesLoad())
+    };
+    const openModal = () => {
+        dispatch(openSelected())
+    };
     return (
         <div className="App">
-            <div className="wrap">
-                <Spin/>
-                <div className="card">
+            <Spin className='spinner'/>
+            <div className='body'>
+                {!!open && <div className="wrap-selected">
+                    <div className="header">
+                        <label>Избранное</label>
+                        <div onClick={openModal}>&times;</div>
+                    </div>
+                    {!empty && <div className="header">
+                        <label>Пусто</label>
+                    </div>}
                     {error && (<div className='error-massage'>
                         {error}
                     </div>)}
-                    <div className="card-image">
-                        <img src={mainImage} alt="surfing"></img>
-                        <Title/>
-                        <Likes/>
+                    {/*  <Likes/>*/}
+                    <Selected/>
+                </div>}
+                <div className="wrap-jokes">
+                    {error && (<div className='error-massage'>
+                        {error}
+                    </div>)}
+                    {/*  <Likes/>*/}
+                    <Jokes/>
+                    <div className="button-refresh">
+                        <button onClick={Refresh}>Обновить</button>
+                        <button onClick={openModal}>Избранное</button>
                     </div>
-                    <Comments/>
                 </div>
             </div>
         </div>

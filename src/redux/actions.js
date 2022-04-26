@@ -1,15 +1,17 @@
 import {
     INCREMENT,
     DECREMENT,
-    INPUT_TEXT,
-    COMMENT_CREATE,
-    COMMENT_UPDATE,
-    COMMENT_DELETE,
-    COMMENTS_LOAD,
+    JOKE_CREATE,
+    JOKE_UPDATE,
+    JOKE_LIKE,
+    JOKE_DELETE,
+    JOKES_LOAD,
     LOADER_DISPLAY_ON,
     LOADER_DISPLAY_OFF,
     ERROR_DISPLAY_ON,
-    ERROR_DISPLAY_OFF
+    ERROR_DISPLAY_OFF,
+
+    OPEN_SELECTED
 } from "./types";
 
 export function incrementLikes() {
@@ -24,30 +26,29 @@ export function decrementLikes() {
     }
 }
 
-export function inputText(text) {
+export function jokeCreate(text, id, like) {
     return {
-        type: INPUT_TEXT,
-        text
+        type: JOKE_CREATE,
+        data: {text, id, like}
     }
 }
 
-export function commentCreate(text, id) {
+export function jokeUpdate(text, id) {
     return {
-        type: COMMENT_CREATE,
+        type: JOKE_UPDATE,
         data: {text, id}
     }
 }
 
-export function commentUpdate(text, id) {
+export function jokeLike(id, like) {
     return {
-        type: COMMENT_UPDATE,
-        data: {text, id}
-    }
+        type: JOKE_LIKE,
+        id, like
+    };
 }
-
-export function commentDelete(id) {
+export function jokeDelete(id) {
     return {
-        type: COMMENT_DELETE,
+        type: JOKE_DELETE,
         id
     };
 }
@@ -70,6 +71,11 @@ export function errorOn(text) {
         text
     }
 }
+export function openSelected() {
+    return {
+        type: OPEN_SELECTED,
+    }
+}
 
 export function errorOff() {
     return {
@@ -77,15 +83,17 @@ export function errorOff() {
     }
 }
 
-export function commentsLoad() {
+export function jokesLoad() {
     return async dispatch => {
         try {
             dispatch(loaderOn());
-            const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=10');
+            const response = await fetch('https://nova-joke-api.netlify.app/.netlify/functions/index/api/ten');
+            //const response = await fetch('https://official-jokeapi.appspot.com/jokes/programming/ten');
             const jsonData = await response.json();
+            const jsonDataLike = jsonData.map((item) => {return {...item, like:false}});
             dispatch({
-                type: 'COMMENTS_LOAD',
-                data: jsonData
+                type: 'JOKES_LOAD',
+                data: jsonDataLike
             });
             dispatch(loaderOff());
         } catch (err) {

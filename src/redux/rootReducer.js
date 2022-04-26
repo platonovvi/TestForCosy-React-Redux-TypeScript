@@ -1,12 +1,10 @@
 import {combineReducers} from "redux";
 import {likesReducer} from './likesReducer';
-import {inputReducer} from './inputReducer';
-import {commentsReducer} from './commentsReducer';
+import {jokesReducer} from './jokesReducer';
 import {appReducer} from './appReducer';
 
 export const rootReducer = combineReducers({
     likesReducer,
-    inputReducer,
-    commentsReducer,
+    jokesReducer: jokesReducer,
     appReducer,
 });

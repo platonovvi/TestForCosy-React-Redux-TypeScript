@@ -1,8 +1,9 @@
-import { LOADER_DISPLAY_ON, LOADER_DISPLAY_OFF, ERROR_DISPLAY_ON, ERROR_DISPLAY_OFF } from './types';
+import { LOADER_DISPLAY_ON, LOADER_DISPLAY_OFF, ERROR_DISPLAY_ON, ERROR_DISPLAY_OFF, OPEN_SELECTED} from './types';
 
 const intialState = {
     loading: false,
-    error: null
+    error: null,
+    openSelected: null
 }
 export const appReducer = (state = intialState, action) => {
     switch(action.type) {
@@ -25,6 +26,11 @@ export const appReducer = (state = intialState, action) => {
             return {
                 ...state,
                 error: null
+            }
+        case OPEN_SELECTED:
+            return {
+                ...state,
+                openSelected: !state.openSelected
             }
         default:
             return state;

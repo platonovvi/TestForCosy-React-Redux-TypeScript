@@ -1,35 +1,153 @@
 .App {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  height: 100vh;
+  @media (max-width: 767px) {
+    max-width: none
+  }
 
-  .wrap {
-    position: relative;
-    max-width: 1200px;
-    margin: 140px auto 0;
+  &.scroll-block {
   }
-  .card {
-    display: flex;
-    padding: 20px;
-    border: 1px solid grey;
-    box-shadow: 0 0 0 5px darkgray;
-    flex-basis: calc(33.333% - 40px);
-    flex-grow: 1;
-    flex-shrink: 0;
-    margin: 0 20px 20px 20px;
-    background: white;
-    position: relative;
-  }
-  .card-image {
+
+  background-image: url('./main-image.jpg');
+  background-position: center;
+  background-size: cover;
+.body {
+  width: 1200px;
+  .wrap-jokes {
     display: flex;
     flex-direction: column;
-    box-shadow: none;
-    margin: 0 2rem 0 0;
-    border: 0;
-    padding: 0;
-    flex: 1 0 60%;
-    max-width: 60%;
+    justify-content: start;
+    box-shadow: 0 0 11px 3px #2a252587;
+    border-radius: 5px;
+    min-width: inherit;
+    background-color: #6ba7a340;
+    backdrop-filter: blur(1px);
+
+    .button-refresh {
+      width: 100%;
+
+      button {
+        margin: 1.5rem 1rem;
+        border: 1px solid #2a252587;
+        padding: 6px 28px;
+        box-shadow: 0 0 9px 2px #63707d;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d8e1d5;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+    }
+
+    .jokes-container {
+      padding: 2rem;
+
+      .jokes-item {
+        text-align: start;
+        display: flex;
+        margin: 1.2rem 0rem;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        color: white;
+        text-shadow: 0px 0px 12px black;
+
+        .add-joke {
+          text-shadow: none;
+          color: green;
+          border: 1px solid #2a252587;
+          padding: 2px 8px;
+          box-shadow: 0 0 9px 2px #63707d;
+          border-radius: 4px;
+          cursor: pointer;
+          background-color: #d8e1d5;
+        }
+      }
+    }
   }
-  /*max-width: 1200px;*/
+
+  .wrap-selected {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    box-shadow: 0 0 11px 3px #2a252587;
+    border-radius: 5px;
+    width: inherit;
+    height: calc(100vh - 160px);
+    background-color: #6ba7a340;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+      color: white;
+      text-shadow: 0px 0px 12px black;
+      div {
+        cursor:pointer
+      }
+    }
+
+    .button-refresh {
+      width: 100%;
+
+      button {
+        margin: 1.5rem 1rem;
+        border: 1px solid #2a252587;
+        padding: 6px 28px;
+        box-shadow: 0 0 9px 2px #63707d;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d8e1d5;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+    }
+
+    .jokes-container {
+      padding: 2rem;
+
+      .jokes-item {
+        text-align: start;
+        display: flex;
+        margin: 1.2rem 0rem;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        color: white;
+        text-shadow: 0px 0px 12px black;
+
+        .buttons {
+          display: flex;
+          .add-joke {
+            margin-left: 5px;
+            text-shadow: none;
+            color: red;
+            border: 1px solid #2a252587;
+            padding: 2px 8px;
+            box-shadow: 0 0 9px 2px #63707d;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #d8e1d5;
+          }
+        }
+      }
+    }
+  }
+}
+
+  .spinner {
+    position: absolute;
+    z-index: 150;
+  }
+
   @media (max-width: 767px) {
     max-width: none
   }
