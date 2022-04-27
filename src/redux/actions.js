@@ -43,7 +43,7 @@ export function jokeUpdate(text, id) {
 export function jokeLike(id, like) {
     return {
         type: JOKE_LIKE,
-        id, like
+        data: {id, like}
     };
 }
 export function jokeDelete(id) {

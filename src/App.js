@@ -16,6 +16,7 @@ function App() {
         dispatch(jokesLoad())
     };
     const openModal = () => {
+        window.scrollTo(0,0)
         dispatch(openSelected())
     };
     return (

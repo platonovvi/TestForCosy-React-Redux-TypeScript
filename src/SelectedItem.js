@@ -35,7 +35,7 @@ function JokeItem({data}) {
         <form onSubmit={handleUpdate} className='jokes-item'>
             <span>{jokeText}</span>
             <div className='buttons'>
-            <div onClick={handleLike} className={'add-joke'}>
+            <div onClick={handleLike} className={!!like && 'add-joke like' || 'add-joke'} disabled={jokeText}>
                 <i className="fa fa-solid fa-heart"></i>
             </div>
             <div onClick={handleDelete} className='add-joke'>

@@ -5,9 +5,6 @@
   align-items: center;
   margin: 0 auto;
   height: 100vh;
-  @media (max-width: 767px) {
-    max-width: none
-  }
 
   &.scroll-block {
   }
@@ -15,133 +12,183 @@
   background-image: url('./main-image.jpg');
   background-position: center;
   background-size: cover;
-.body {
-  width: 1200px;
-  .wrap-jokes {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    box-shadow: 0 0 11px 3px #2a252587;
-    border-radius: 5px;
-    min-width: inherit;
-    background-color: #6ba7a340;
-    backdrop-filter: blur(1px);
 
-    .button-refresh {
-      width: 100%;
+  .body {
+    width: 1200px;
+    position: relative;
 
-      button {
-        margin: 1.5rem 1rem;
-        border: 1px solid #2a252587;
-        padding: 6px 28px;
-        box-shadow: 0 0 9px 2px #63707d;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #d8e1d5;
-        font-weight: bold;
-        font-size: 1rem;
-      }
-    }
+    .wrap-jokes {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      box-shadow: 0 0 11px 3px #2a252587;
+      border-radius: 5px;
+      min-width: inherit;
+      background-color: #6ba7a340;
+      backdrop-filter: blur(1px);
 
-    .jokes-container {
-      padding: 2rem;
+      .button-refresh {
+        width: 100%;
 
-      .jokes-item {
-        text-align: start;
-        display: flex;
-        margin: 1.2rem 0rem;
-        justify-content: space-between;
-        font-size: 1.4rem;
-        color: white;
-        text-shadow: 0px 0px 12px black;
-
-        .add-joke {
-          text-shadow: none;
-          color: green;
+        button {
+          margin: 1.5rem 1rem;
           border: 1px solid #2a252587;
-          padding: 2px 8px;
+          padding: 6px 28px;
           box-shadow: 0 0 9px 2px #63707d;
           border-radius: 4px;
           cursor: pointer;
-          background-color: #d8e1d5;
+          background: linear-gradient(#d8e1d5, #97a194, #d8e1d5);
+          font-weight: bold;
+          font-size: 1rem;
+
+          &:active {
+            box-shadow: inset 0 0 3px 1px #63707d;
+          }
+          &:hover {
+            transform: scale(1.05);
+          }
         }
       }
-    }
-  }
 
-  .wrap-selected {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    box-shadow: 0 0 11px 3px #2a252587;
-    border-radius: 5px;
-    width: inherit;
-    height: calc(100vh - 160px);
-    background-color: #6ba7a340;
-    backdrop-filter: blur(5px);
-    z-index: 100;
+      .jokes-container {
+        padding: 2rem;
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: white;
-      color: white;
-      text-shadow: 0px 0px 12px black;
-      div {
-        cursor:pointer
-      }
-    }
-
-    .button-refresh {
-      width: 100%;
-
-      button {
-        margin: 1.5rem 1rem;
-        border: 1px solid #2a252587;
-        padding: 6px 28px;
-        box-shadow: 0 0 9px 2px #63707d;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #d8e1d5;
-        font-weight: bold;
-        font-size: 1rem;
-      }
-    }
-
-    .jokes-container {
-      padding: 2rem;
-
-      .jokes-item {
-        text-align: start;
-        display: flex;
-        margin: 1.2rem 0rem;
-        justify-content: space-between;
-        font-size: 1.4rem;
-        color: white;
-        text-shadow: 0px 0px 12px black;
-
-        .buttons {
+        .jokes-item {
+          text-align: start;
           display: flex;
+          margin: 1.2rem 0rem;
+          justify-content: space-between;
+          font-size: 1.4rem;
+          color: white;
+          text-shadow: 0px 0px 12px black;
+
           .add-joke {
-            margin-left: 5px;
             text-shadow: none;
-            color: red;
+            color: #505250;
             border: 1px solid #2a252587;
             padding: 2px 8px;
+            max-height: 2rem;
             box-shadow: 0 0 9px 2px #63707d;
             border-radius: 4px;
             cursor: pointer;
-            background-color: #d8e1d5;
+            background: linear-gradient(#d8e1d5, #97a194, #d8e1d5);
+
+            &:active {
+              box-shadow: inset 0 0 3px 1px #63707d;
+            }
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+
+    .wrap-selected {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      box-shadow: 0 0 11px 3px #2a252587;
+      border-radius: 5px;
+      width: inherit;
+      height: 100%;
+      background-color: #6ba7a340;
+      backdrop-filter: blur(5px);
+      z-index: 100;
+
+      animation: popup 0.2s 1 alternate;
+
+      @keyframes popup {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: white;
+        color: white;
+        text-shadow: 0px 0px 12px black;
+
+        div {
+          cursor: pointer
+        }
+      }
+
+      .button-refresh {
+        width: 100%;
+
+        button {
+          margin: 1.5rem 1rem;
+          border: 1px solid #2a252587;
+          padding: 6px 28px;
+          box-shadow: 0 0 9px 2px #63707d;
+          border-radius: 4px;
+          cursor: pointer;
+          background: linear-gradient(#d8e1d5, #97a194, #d8e1d5);
+          font-weight: bold;
+          font-size: 1rem;
+
+          &:active {
+            box-shadow: inset 0 0 3px 1px #63707d;
+          }
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .jokes-container {
+        padding: 2rem;
+
+        .jokes-item {
+          text-align: start;
+          display: flex;
+          margin: 1.2rem 0rem;
+          justify-content: space-between;
+          font-size: 1.4rem;
+          color: white;
+          text-shadow: 0px 0px 12px black;
+
+          .buttons {
+            display: flex;
+
+            .add-joke {
+              margin-left: 5px;
+              text-shadow: none;
+              color: #63707d; //#e74141
+              border: 1px solid #2a252587;
+              padding: 2px 8px;
+              max-height: 2rem;
+              box-shadow: 0 0 9px 2px #63707d;
+              border-radius: 4px;
+              cursor: pointer;
+              background: linear-gradient(#d8e1d5, #97a194, #d8e1d5);
+              &.like {
+                color: red;
+              }
+              &:active {
+                box-shadow: inset 0 0 3px 1px #63707d;
+              }
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
           }
         }
       }
     }
   }
-}
 
   .spinner {
     position: absolute;
@@ -149,7 +196,11 @@
   }
 
   @media (max-width: 767px) {
-    max-width: none
+    height: 100%;
+    .body {
+      width: 100vw;
+    }
   }
+
 }
 

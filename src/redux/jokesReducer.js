@@ -1,4 +1,4 @@
-import {JOKE_CREATE, JOKE_UPDATE, JOKE_DELETE, JOKE_LIKE, JOKES_LOAD} from './types';
+import {JOKE_CREATE, JOKE_UPDATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
 
 const intialState = {
     jokes: [],
@@ -41,12 +41,11 @@ export const jokesReducer = (state = intialState, action) => {
             return (() => {
                 const {data} = action;
                 const {selected} = state;
-                console.log(data);
                 const itemIndex = selected.findIndex(res => res.id === data.id);
 
                 const nextJokes = [
                     ...selected.slice(0, itemIndex),
-                    {...data, like: !data[itemIndex].like},
+                    {...selected[itemIndex], like: !selected[itemIndex].like},
                     ...selected.slice(itemIndex + 1)
                 ];
                 return {
