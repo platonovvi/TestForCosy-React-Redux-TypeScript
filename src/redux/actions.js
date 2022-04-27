@@ -26,10 +26,10 @@ export function decrementLikes() {
     }
 }
 
-export function jokeCreate(text, id, like) {
+export function jokeCreate(text, id, like, id_joke) {
     return {
         type: JOKE_CREATE,
-        data: {text, id, like}
+        data: {text, id, like, id_joke}
     }
 }
 
@@ -46,10 +46,10 @@ export function jokeLike(id, like) {
         data: {id, like}
     };
 }
-export function jokeDelete(id) {
+export function jokeDelete(id, id_joke) {
     return {
         type: JOKE_DELETE,
-        id
+        data: {id, id_joke}
     };
 }
 
@@ -90,7 +90,7 @@ export function jokesLoad() {
             const response = await fetch('https://nova-joke-api.netlify.app/.netlify/functions/index/api/ten');
             //const response = await fetch('https://official-jokeapi.appspot.com/jokes/programming/ten');
             const jsonData = await response.json();
-            const jsonDataLike = jsonData.map((item) => {return {...item, like:false}});
+            const jsonDataLike = jsonData.map((item) => {return {...item, like:false, added:false}});
             dispatch({
                 type: 'JOKES_LOAD',
                 data: jsonDataLike

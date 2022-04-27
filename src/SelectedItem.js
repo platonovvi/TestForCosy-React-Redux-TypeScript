@@ -5,7 +5,7 @@ import uniqid from "uniqid";
 
 function JokeItem({data}) {
     const [jokeText, setTextJokes] = useState('');
-    const {text, id, like} = data;
+    const {text, id, like, id_joke} = data;
     const dispatch = useDispatch();
     const handleCreate = (e) => {
         e.preventDefault();
@@ -23,10 +23,11 @@ function JokeItem({data}) {
     }
     const handleDelete = (e) => {
         e.preventDefault();
-        dispatch(jokeDelete(id));
+        dispatch(jokeDelete(id, id_joke));
     }
 
     useEffect(() => {
+        console.log(id_joke);
         if (text) {
             setTextJokes(text);
         }
@@ -35,7 +36,7 @@ function JokeItem({data}) {
         <form onSubmit={handleUpdate} className='jokes-item'>
             <span>{jokeText}</span>
             <div className='buttons'>
-            <div onClick={handleLike} className={!!like && 'add-joke like' || 'add-joke'} disabled={jokeText}>
+            <div onClick={handleLike} className={!!like && 'add-joke like' || 'add-joke'}>
                 <i className="fa fa-solid fa-heart"></i>
             </div>
             <div onClick={handleDelete} className='add-joke'>
