@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './App.scss';
-import Likes from './Likes';
 import Jokes from './Jokes';
 import Selected from './Selected';
 import Spin from './Spin';
@@ -34,14 +33,12 @@ function App() {
                     {error && (<div className='error-massage'>
                         {error}
                     </div>)}
-                    {/*  <Likes/>*/}
                     <Selected/>
                 </div>}
                 <div className="wrap-jokes">
                     {error && (<div className='error-massage'>
                         {error}
                     </div>)}
-                    {/*  <Likes/>*/}
                     <Jokes/>
                     <div className="button-refresh">
                         <button onClick={Refresh}>Обновить</button>

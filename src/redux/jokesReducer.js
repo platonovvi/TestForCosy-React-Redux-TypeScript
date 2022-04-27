@@ -1,4 +1,4 @@
-import {JOKE_CREATE, JOKE_UPDATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
+import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
 
 const intialState = {
     jokes: [],
@@ -31,20 +31,6 @@ export const jokesReducer = (state = intialState, action) => {
                 ...state,
                 jokes: jokesNew
             }
-
-        /* case JOKE_UPDATE:
-             const {data} = action;
-             const {jokes} = state;
-             const itemIndex = jokes.findIndex(res => res.id === data.id);
-             const nextJokes = [
-                 ...jokes.slice(0, itemIndex),
-                 data,
-                 ...jokes.slice(itemIndex + 1)
-             ];
-             return {
-                 ...state,
-                 //jokes: [...state.jokes, action.data]
-             }*/
         case JOKE_LIKE:
             return (() => {
                 const {data} = action;

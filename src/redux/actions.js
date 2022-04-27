@@ -1,11 +1,8 @@
 import {
-    INCREMENT,
-    DECREMENT,
     JOKE_CREATE,
-    JOKE_UPDATE,
-    JOKE_LIKE,
     JOKE_DELETE,
     JOKES_LOAD,
+    JOKE_LIKE,
     LOADER_DISPLAY_ON,
     LOADER_DISPLAY_OFF,
     ERROR_DISPLAY_ON,
@@ -14,29 +11,10 @@ import {
     OPEN_SELECTED
 } from "./types";
 
-export function incrementLikes() {
-    return {
-        type: INCREMENT
-    }
-}
-
-export function decrementLikes() {
-    return {
-        type: DECREMENT
-    }
-}
-
 export function jokeCreate(text, id, like, id_joke) {
     return {
         type: JOKE_CREATE,
         data: {text, id, like, id_joke}
-    }
-}
-
-export function jokeUpdate(text, id) {
-    return {
-        type: JOKE_UPDATE,
-        data: {text, id}
     }
 }
 
@@ -46,6 +24,7 @@ export function jokeLike(id, like) {
         data: {id, like}
     };
 }
+
 export function jokeDelete(id, id_joke) {
     return {
         type: JOKE_DELETE,
@@ -71,15 +50,16 @@ export function errorOn(text) {
         text
     }
 }
-export function openSelected() {
-    return {
-        type: OPEN_SELECTED,
-    }
-}
 
 export function errorOff() {
     return {
         type: ERROR_DISPLAY_OFF,
+    }
+}
+
+export function openSelected() {
+    return {
+        type: OPEN_SELECTED,
     }
 }
 
@@ -90,7 +70,9 @@ export function jokesLoad() {
             const response = await fetch('https://nova-joke-api.netlify.app/.netlify/functions/index/api/ten');
             //const response = await fetch('https://official-jokeapi.appspot.com/jokes/programming/ten');
             const jsonData = await response.json();
-            const jsonDataLike = jsonData.map((item) => {return {...item, like:false, added:false}});
+            const jsonDataLike = jsonData.map((item) => {
+                return {...item, like: false, added: false}
+            });
             dispatch({
                 type: 'JOKES_LOAD',
                 data: jsonDataLike

@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
-import {jokeCreate, jokeUpdate, jokeDelete} from "./redux/actions";
+import {jokeCreate} from "./redux/actions";
 import uniqid from "uniqid";
 
 function JokeItem({data}) {
@@ -14,22 +14,13 @@ function JokeItem({data}) {
         dispatch(jokeCreate(jokeText, id, like, id_joke));
     }
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        dispatch(jokeUpdate(jokeText, id));
-    }
-    const handleDelete = (e) => {
-        e.preventDefault();
-        dispatch(jokeDelete(id));
-    }
-
     useEffect(() => {
         if (text) {
             setTextJokes(text);
         }
     }, [text]);
     return (
-        <form onSubmit={handleUpdate} className={added && 'jokes-item added' || 'jokes-item'} disabled>
+        <form className={added && 'jokes-item added' || 'jokes-item'}>
             <span>{jokeText} {added}</span>
             {!added && <div onClick={handleCreate} className='add-joke'>
                 <i className="fa fa-solid fa-plus"></i>
