@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import {jokeDelete, jokeLike} from "./redux/actions";
-import uniqid from "uniqid";
 
 function JokeItem({data}) {
     const [jokeText, setTextJokes] = useState('');

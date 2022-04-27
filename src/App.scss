@@ -223,6 +223,11 @@
     .body {
       width: 100vw;
     }
+    .spinner {
+      position: absolute;
+      top:35%;
+      z-index: 150;
+    }
   }
 
 }

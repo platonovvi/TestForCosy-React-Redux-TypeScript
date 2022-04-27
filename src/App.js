@@ -12,6 +12,7 @@ function App() {
     const empty = useSelector(state => state.jokesReducer.selected.length);
     const dispatch = useDispatch();
     const Refresh = () => {
+        window.scrollTo(0,0)
         dispatch(jokesLoad())
     };
     const openModal = () => {
