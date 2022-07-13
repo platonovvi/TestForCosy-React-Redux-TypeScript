@@ -1,10 +1,11 @@
 import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
 
-const intialState = {
+const initialState = {
     jokes: [],
     selected: []
 }
-export const jokesReducer = (state = intialState, action) => {
+export const jokesReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case JOKE_CREATE:
             const itemIndex = state.jokes.findIndex(res => res.id === action.data.id_joke);
