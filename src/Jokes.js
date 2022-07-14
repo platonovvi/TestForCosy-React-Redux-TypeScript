@@ -1,30 +1,24 @@
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import uniqid from 'uniqid'
-import JokeItem from './JokeItem'
 import {jokeCreate, jokesLoad} from './redux/actions'
+import uniqid from 'uniqid'
 
-function Jokes(props) {
-    const [textJoke, setTextJokes] = useState('');
-    const jokes = useSelector(state => {
-        const {jokesReducer} = state;
-        return jokesReducer.jokes;
-    });
+const Jokes = ({props}) => {
 
-    const dispatch = useDispatch();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const id = uniqid();
-        dispatch(jokeCreate(textJoke, id));
-    }
-
-    useEffect(() => {
-        dispatch(jokesLoad());
-    }, []);
     return (
         <div className='jokes-container'>
-            {!!jokes.length && jokes.map(res => {
-                return  <JokeItem key={res.id} data={res}/>
+            {props.jokes.length && props.jokes.map(res => {
+                return <form className={res.added && 'jokes-item added' || 'jokes-item'} key={res.id}>
+                    <span>{res.text} {res.added}</span>
+                    {!res.added &&
+                    <div onClick={props.handleCreate(res.text, uniqid(), res.like, res.id)} className='add-joke'>
+                        <i className="fa fa-solid fa-plus"></i>
+                    </div>
+                    || <div className='add-joke check'>
+                        <i className="fa fa-solid fa-check"></i>
+                    </div>
+                    }
+                </form>
             })}
         </div>
     )

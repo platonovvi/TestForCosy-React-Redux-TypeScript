@@ -58,11 +58,16 @@ export const jokesReducer = (state = initialState, action) => {
                     ...selected.slice(itemIndex + 1)
                 ];
                 const itemIndex2 = state.jokes.findIndex(res => res.id === action.data.id_joke);
-                const nextJokes2 = [
-                    ...state.jokes.slice(0, itemIndex2),
-                    {...state.jokes[itemIndex2], added: !state.jokes[itemIndex2].added},
-                    ...state.jokes.slice(itemIndex2 + 1)
-                ];
+
+                let nextJokes2 = [...state.jokes];
+                if(itemIndex2 >= 0) {
+                    nextJokes2 = [
+                        ...state.jokes.slice(0, itemIndex2),
+                        {...state.jokes[itemIndex2], added: !state.jokes[itemIndex2].added},
+                        ...state.jokes.slice(itemIndex2 + 1)
+                    ];
+                }
+
                 return {
                     ...state,
                     selected: nextJokes,

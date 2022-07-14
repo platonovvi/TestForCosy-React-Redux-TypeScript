@@ -29,9 +29,10 @@
 
       .button-refresh {
         width: 100%;
+        margin-bottom: 1.5rem;
 
         button {
-          margin: 1.5rem 1rem;
+          margin: 0rem 1rem;
           border: 1px solid #2a252587;
           padding: 6px 28px;
           box-shadow: 0 0 9px 2px #63707d;
@@ -52,7 +53,7 @@
       }
 
       .jokes-container {
-        padding: 2rem;
+        padding: 2rem 2rem 0rem 2rem;
 
         .jokes-item {
           text-align: start;
@@ -132,7 +133,7 @@
       .header {
         display: flex;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 1rem 2rem;
         font-size: 1.8rem;
         font-weight: bold;
         color: white;
@@ -144,32 +145,8 @@
         }
       }
 
-      .button-refresh {
-        width: 100%;
-
-        button {
-          margin: 1.5rem 1rem;
-          border: 1px solid #2a252587;
-          padding: 6px 28px;
-          box-shadow: 0 0 9px 2px #63707d;
-          border-radius: 4px;
-          cursor: pointer;
-          background: linear-gradient(#d8e1d5, #97a194, #d8e1d5);
-          font-weight: bold;
-          font-size: 1rem;
-
-          &:active {
-            box-shadow: inset 0 0 3px 1px #63707d;
-          }
-
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
-      }
-
       .jokes-container {
-        padding: 2rem;
+        padding: 0rem 2rem;
 
         .jokes-item {
           text-align: start;
