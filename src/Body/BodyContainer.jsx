@@ -1,5 +1,5 @@
 import React from 'react';
-import {jokeCreate, jokesLoad, openSelected} from './redux/actions'
+import {jokeCreate, jokesLoad, openSelected} from './../redux/actions'
 import {connect} from "react-redux";
 import Body from "./Body";
 

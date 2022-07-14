@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import Spin from './Spin';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import BodyContainer from "./BodyContainer";
+import BodyContainer from "./Body/BodyContainer";
 
 const App = () => {
     return (

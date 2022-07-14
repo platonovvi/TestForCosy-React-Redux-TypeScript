@@ -1,6 +1,6 @@
 import React from 'react';
-import Jokes from "./Jokes";
-import SelectedContainer from "./SelectedContainer";
+import Jokes from "./Jokes/Jokes";
+import SelectedContainer from "./Selected/SelectedContainer";
 
 
 const Body = (props) => {
