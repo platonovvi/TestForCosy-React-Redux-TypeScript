@@ -10,7 +10,7 @@ const Selected = (props) => {
             </div>
             {!props.selected.length ? <div className="header">
                 <label>Пусто</label>
-            </div> : ''}
+            </div> : null}
             {props.error && (<div className='error-massage'>
                 {props.error}
             </div>)}
@@ -30,7 +30,7 @@ const Selected = (props) => {
                             </div>
                         </form>
                     )
-                }) : ''}
+                }) : null}
             </div>
         </div>
     )
