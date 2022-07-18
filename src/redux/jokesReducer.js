@@ -1,5 +1,4 @@
 import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
-//localStorage.clear();
 const initialState = {
     jokes:  [],
     selected: JSON.parse(localStorage.getItem('jokesSelected')) || []
