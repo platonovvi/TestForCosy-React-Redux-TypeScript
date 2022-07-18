@@ -1,8 +1,8 @@
 import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
-
+//localStorage.clear();
 const initialState = {
-    jokes: [],
-    selected: []
+    jokes:  [],
+    selected: JSON.parse(localStorage.getItem('jokesSelected')) || []
 }
 export const jokesReducer = (state = initialState, action) => {
 
@@ -14,6 +14,7 @@ export const jokesReducer = (state = initialState, action) => {
                 {...state.jokes[itemIndex], added: !state.jokes[itemIndex].added},
                 ...state.jokes.slice(itemIndex + 1)
             ];
+            localStorage.setItem('jokesSelected', JSON.stringify([...state.selected, action.data]))
             return {
                 ...state,
                 selected: [...state.selected, action.data],
@@ -42,6 +43,8 @@ export const jokesReducer = (state = initialState, action) => {
                     {...selected[itemIndex], like: !selected[itemIndex].like},
                     ...selected.slice(itemIndex + 1)
                 ];
+
+                localStorage.setItem('jokesSelected', JSON.stringify(nextJokes))
                 return {
                     ...state,
                     selected: nextJokes,
@@ -68,6 +71,7 @@ export const jokesReducer = (state = initialState, action) => {
                     ];
                 }
 
+                localStorage.setItem('jokesSelected', JSON.stringify(nextJokes))
                 return {
                     ...state,
                     selected: nextJokes,
