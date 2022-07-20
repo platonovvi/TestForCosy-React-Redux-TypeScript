@@ -9,7 +9,7 @@ const Selected = (props) => {
                 <div onClick={props.openSelected}>&times;</div>
             </div>
             {!props.selected.length ? <div className="header">
-                <label>Пусто</label>
+                <label>Пусто123</label>
             </div> : null}
             {props.error && (<div className='error-massage'>
                 {props.error}
