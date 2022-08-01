@@ -1,11 +1,17 @@
 import {LOADER_DISPLAY_ON, LOADER_DISPLAY_OFF, ERROR_DISPLAY_ON, ERROR_DISPLAY_OFF, OPEN_SELECTED} from './types';
 
-const initialState = {
+export type InitialStateType = {
+    loading: boolean,
+    error: string,
+    openSelected: boolean,
+}
+
+const initialState: InitialStateType = {
     loading: false,
     error: null,
-    openSelected: null
+    openSelected: false
 }
-export const appReducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case LOADER_DISPLAY_ON:
             return {
