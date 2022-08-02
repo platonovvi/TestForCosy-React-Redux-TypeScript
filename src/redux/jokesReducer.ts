@@ -1,9 +1,13 @@
-import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE} from './types';
+import {JOKE_CREATE, JOKE_DELETE, JOKES_LOAD, JOKE_LIKE, SelectedType, JokesType} from './types';
+
 const initialState = {
-    jokes:  [],
-    selected: JSON.parse(localStorage.getItem('jokesSelected')) || []
+    jokes: [] as Array<JokesType>,
+    selected: JSON.parse(localStorage.getItem('jokesSelected')) || [] as Array<SelectedType>
 }
-export const jokesReducer = (state = initialState, action) => {
+
+export type InitialStateType = typeof initialState;
+
+export const jokesReducer = (state = initialState, action: any): InitialStateType => {
 
     switch (action.type) {
         case JOKE_CREATE:
@@ -62,7 +66,7 @@ export const jokesReducer = (state = initialState, action) => {
                 const itemIndex2 = state.jokes.findIndex(res => res.id === action.data.id_joke);
 
                 let nextJokes2 = [...state.jokes];
-                if(itemIndex2 >= 0) {
+                if (itemIndex2 >= 0) {
                     nextJokes2 = [
                         ...state.jokes.slice(0, itemIndex2),
                         {...state.jokes[itemIndex2], added: !state.jokes[itemIndex2].added},
