@@ -18,6 +18,11 @@ export type JokesType = {
 export type SelectedType = {
     text: string, id: string, like: boolean, id_joke: number
 }
+export type PropsType = {
+    jokes:Array<JokesType>,
+    selected:Array<SelectedType>,
+    openSelected: boolean
+}
 
 export type JokeCreateDataType = {
     text: string, id: string, like: boolean, id_joke: number
