@@ -1,10 +1,6 @@
-import {useState, useEffect} from 'react'
-import {useDispatch, useSelector} from "react-redux";
-import {jokeCreate, jokesLoad} from './../../redux/actions'
 import uniqid from 'uniqid'
 
 const Jokes = ({props}) => {
-
     return (
         <div className='jokes-container'>
             {props.jokes.length && props.jokes.map(res => {
