@@ -6,3 +6,7 @@ export const rootReducer = combineReducers({
     jokesReducer: jokesReducer,
     appReducer,
 });
+
+type RootReducerType = typeof rootReducer;
+export type AppStateType = ReturnType<RootReducerType>
+

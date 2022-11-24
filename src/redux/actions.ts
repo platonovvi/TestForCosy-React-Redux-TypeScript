@@ -10,24 +10,25 @@ import {
     ERROR_DISPLAY_ON,
     ERROR_DISPLAY_OFF,
 
-    OPEN_SELECTED
+    OPEN_SELECTED, JokeCreateType, JokeLikeType, JokeDeleteType
 } from "./types";
 
-export function jokeCreate(text, id, like, id_joke) {
+
+export function jokeCreate(text: string, id: string, like: boolean, id_joke: number): JokeCreateType {
     return {
         type: JOKE_CREATE,
         data: {text, id, like, id_joke}
     }
 }
 
-export function jokeLike(id, like) {
+export function jokeLike(id: string, like: boolean): JokeLikeType {
     return {
         type: JOKE_LIKE,
         data: {id, like}
     };
 }
 
-export function jokeDelete(id, id_joke) {
+export function jokeDelete(id: string, id_joke: number): JokeDeleteType {
     return {
         type: JOKE_DELETE,
         data: {id, id_joke}
@@ -65,7 +66,7 @@ export function openSelected() {
     }
 }
 
-export function jokesLoad() {
+export function jokesLoad(){
     return async dispatch => {
         try {
             dispatch(loaderOn());
@@ -76,7 +77,7 @@ export function jokesLoad() {
                 return {...item, like: false, added: false}
             });
             dispatch({
-                type: 'JOKES_LOAD',
+                type: JOKES_LOAD,
                 data: jsonDataLike
             });
             dispatch(loaderOff());

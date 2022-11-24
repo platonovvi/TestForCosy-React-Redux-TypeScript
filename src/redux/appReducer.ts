@@ -2,15 +2,17 @@ import {LOADER_DISPLAY_ON, LOADER_DISPLAY_OFF, ERROR_DISPLAY_ON, ERROR_DISPLAY_O
 
 const initialState = {
     loading: false,
-    error: null,
-    openSelected: null
+    error: null as string | null,
+    openSelected: false
 }
-export const appReducer = (state = initialState, action) => {
+
+export type InitialStateType = typeof initialState;
+export const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case LOADER_DISPLAY_ON:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case LOADER_DISPLAY_OFF:
             return {
